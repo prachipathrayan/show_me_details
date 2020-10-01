@@ -1,0 +1,10 @@
+.nyc_output
+env.list
+.env
+node_modules
+.idea
+dist
+*.log
+.idea
+*-audit.json
+previous.ts

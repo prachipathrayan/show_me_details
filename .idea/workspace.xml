@@ -20,7 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66484cea-5f78-4a1d-8d4a-b143b7500871" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/db.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/database/mysql.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/express/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/express/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/daos/MockDb/MockDao.mock.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/daos/MockDb/MockDb.backup.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/daos/MockDb/MockDb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/daos/User/UserDao.mock.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/daos/User/UserDao.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/User.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/scripts/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/stylesheets/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +87,7 @@
       <updated>1601375281359</updated>
       <workItem from="1601375282474" duration="201000" />
       <workItem from="1601389978776" duration="1156000" />
-      <workItem from="1601557942138" duration="180000" />
+      <workItem from="1601557942138" duration="7977000" />
     </task>
     <servers />
   </component>

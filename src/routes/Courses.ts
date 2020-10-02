@@ -2,12 +2,15 @@ import { Request, Response, Router } from 'express';
 import { BAD_REQUEST, CREATED, OK } from 'http-status-codes';
 import { ParamsDictionary } from 'express-serve-static-core';
 
-import UserDao from '@daos/User/UserDao.mock';
 import { paramMissingError } from '@shared/constants';
+import {nest} from "../utils";
+import logger from "@shared/Logger";
+import {CourseService} from "../services/courseService";
+import {courseDetails} from "../services/courseService/types";
 
 // Init shared
 const router = Router();
-const userDao = new UserDao();
+
 
 
 /******************************************************************************
@@ -15,9 +18,20 @@ const userDao = new UserDao();
  ******************************************************************************/
 
 router.get('/all', async (req: Request, res: Response) => {
-    const users = await userDao.getAll();
-    return res.status(OK).json({users});
+    const getStudents = new CourseService();
+    let courses : courseDetails[];
+    let err: Error;
+    [err, courses]= await nest(getStudents.getListOfCourses());
+    if(err){
+        logger.error('Router Problem');
+        throw new Error('Router Problem');
+    }
+    return res.json({
+        data: courses,
+        error: null
+    });
 });
+
 
 
 /******************************************************************************

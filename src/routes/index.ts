@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import CourseRouter from './Courses';
-
+import StudentRouter from './students';
 // Init router and path
 const router = Router();
 
 // Add sub-routes
-router.use('/users', CourseRouter);
+router.use('/courses', CourseRouter);
 router.use('/students', StudentRouter);
 
 // Export the base-router

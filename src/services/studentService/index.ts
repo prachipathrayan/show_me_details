@@ -1,8 +1,8 @@
 import { nest } from '../../utils';
 import logger from '@shared/Logger';
 import {IStudentServices, studentDetails} from './types';
-import { promises as  file } from 'fs';
 import * as fs from "fs";
+import {writeFile} from "fs/promises";
 
 export class StudentService implements IStudentServices {
 
@@ -35,4 +35,27 @@ export class StudentService implements IStudentServices {
         });
         return listOfCourses;
     }
+
+    // async addStudent(studentDetails: studentDetails): Promise<any | Error> {
+    //     let err: Error;
+    //     let res: any;
+    //     // @ts-ignore
+    //     [err, res] = await nest(this.getStudents());
+    //     if (err) {
+    //         logger.error('Error in getEvents function', {error: err});
+    //         throw new Error('Error in getEvents function');
+    //     }
+    //
+    //     res.push(studentDetails);
+    //     let data: any = {
+    //         "data": res,
+    //     };
+    //     [err, data] = await nest(writeFile('./courses.json', data));
+    //     if (err) {
+    //         logger.error('Error in writing data to the file', {error: err});
+    //         throw new Error('Error in writing data to the file');
+    //     } else {
+    //         return true;
+    //     }
+    // }
 }

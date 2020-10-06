@@ -20,15 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66484cea-5f78-4a1d-8d4a-b143b7500871" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/config/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/database/type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/schema/models/coursesModelManager/courseModelManager.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/schema/models/coursesModelManager/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/schema/models/studentModelManager/studentModelManager.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/schema/models/studentModelManager/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/db.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/database/mysql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/database/mysql.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Courses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Courses.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/students.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/students.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/courseService/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/courseService/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/studentService/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/studentService/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/studentService/students.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/studentService/students.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/studentService/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/studentService/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +53,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../keep_me_updated" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../falcon-heavy" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="ts.external.directory.path" value="D:\project\experiment_dude\show_me_details\node_modules\typescript\lib" />
@@ -84,7 +88,11 @@
       <workItem from="1601389978776" duration="1156000" />
       <workItem from="1601557942138" duration="10249000" />
       <workItem from="1601624351914" duration="10112000" />
-      <workItem from="1601647142477" duration="3084000" />
+      <workItem from="1601647142477" duration="3682000" />
+      <workItem from="1601654260460" duration="1133000" />
+      <workItem from="1601754807755" duration="1240000" />
+      <workItem from="1601901745652" duration="4501000" />
+      <workItem from="1601986980866" duration="5459000" />
     </task>
     <servers />
   </component>
@@ -108,10 +116,14 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1601391414388" />
-    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1601649942401">
+    <state x="533" y="234" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601987907444">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1601649942401" />
+    <state x="533" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1601987907444" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1601987004621">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1601987004621" />
     <state width="1364" height="258" key="GridCell.Tab.0.bottom" timestamp="1601391540092">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

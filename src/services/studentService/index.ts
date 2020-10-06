@@ -50,7 +50,7 @@ export class StudentService implements IStudentServices {
     //     let data: any = {
     //         "data": res,
     //     };
-    //     [err, data] = await nest(writeFile('./courses.json', data));
+    //     [err, data] = await nest(writeFile('./coursesModelManager.json', data));
     //     if (err) {
     //         logger.error('Error in writing data to the file', {error: err});
     //         throw new Error('Error in writing data to the file');

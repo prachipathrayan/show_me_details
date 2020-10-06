@@ -11,7 +11,7 @@ export class CourseService implements ICourseServices {
         let err: Error;
         let res: any;
         // @ts-ignore
-        [err, res] = await nest(JSON.parse(fs.readFileSync(`./courses.json`).data));
+        [err, res] = JSON.parse(fs.readFileSync("coursesModelManager.json").data));
         if (err) {
             logger.error('Error in fetching data from the file', {Error: err});
             throw new Error('Error in fetching data from the file');
@@ -80,7 +80,7 @@ export class CourseService implements ICourseServices {
     //     let data: any = {
     //         "data": res,
     //     };
-    //     [err, data] = await nest(writeFile('./courses.json', data));
+    //     [err, data] = await nest(writeFile('./coursesModelManager.json', data));
     //     if (err) {
     //         logger.error('Error in writing data to the file', {error: err});
     //         throw new Error('Error in writing data to the file');

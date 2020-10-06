@@ -5,7 +5,7 @@ import StudentRouter from './students';
 const router = Router();
 
 // Add sub-routes
-router.use('/courses', CourseRouter);
+router.use('/coursesModelManager', CourseRouter);
 router.use('/students', StudentRouter);
 
 // Export the base-router

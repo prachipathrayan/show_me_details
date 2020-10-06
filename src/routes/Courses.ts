@@ -14,7 +14,7 @@ const router = Router();
 
 
 /******************************************************************************
- *                      Get All Users - "GET /api/courses/all"
+ *                      Get All Users - "GET /api/coursesModelManager/all"
  ******************************************************************************/
 
 router.get('/all', async (req: Request, res: Response) => {

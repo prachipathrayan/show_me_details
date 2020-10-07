@@ -6,4 +6,6 @@ export interface IStudentServices{
 export type studentDetails={
     id : number;
     name: string;
+    email: string;
+    passwordHash: string;
 }

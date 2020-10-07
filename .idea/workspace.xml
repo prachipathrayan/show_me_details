@@ -20,26 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66484cea-5f78-4a1d-8d4a-b143b7500871" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/config/jwt.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/schema/models/enrollmentModelManager/enrollmentModelManager.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/schema/models/enrollmentModelManager/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/authService/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/tokenauth.middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/authService/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/bcrypt.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dotenv/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dotenv/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/database/mysql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/database/mysql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/schema/models/coursesModelManager/courseModelManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/schema/models/coursesModelManager/courseModelManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/jwt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/jwt.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/schema/models/studentModelManager/studentModelManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/schema/models/studentModelManager/studentModelManager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Courses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Courses.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/courseService/courses.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/courseService/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/courseService/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/courseService/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/courseService/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/studentService/students.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/Logger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/Logger.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/schema/models/studentModelManager/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/schema/models/studentModelManager/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/authService/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/authService/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/studentService/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/studentService/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +90,7 @@
       <workItem from="1601654260460" duration="1133000" />
       <workItem from="1601754807755" duration="1240000" />
       <workItem from="1601901745652" duration="4501000" />
-      <workItem from="1601986980866" duration="21417000" />
+      <workItem from="1601986980866" duration="23571000" />
     </task>
     <servers />
   </component>
@@ -200,5 +190,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="77" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1601390342142" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1602092438370">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1602092438370" />
   </component>
 </project>

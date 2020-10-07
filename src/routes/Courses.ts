@@ -21,19 +21,19 @@ router.get('/all', async (req: Request, res: Response) => {
     const courseService = new CourseService();
     let courses : courseDetails[];
     let err: Error;
-    [err, courses]= await nest(courseService.getListOfCourses());
-    if(err){
-        logger.error('Router Problem');
-        throw new Error('Router Problem');
-        return res.json({
-            Error: err,
-        })
-    }
-    else{
-        return res.json({
-        data: courses,
-        error: null
-    });}
+    // [err, courses]= await nest(courseService.getListOfCourses());
+    // if(err){
+    //     logger.error('Router Problem');
+    //     throw new Error('Router Problem');
+    //     return res.json({
+    //         Error: err,
+    //     })
+    // }
+    // else{
+    //     return res.json({
+    //     data: courses,
+    //     error: null
+    // });}
 
 });
 

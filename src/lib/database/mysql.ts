@@ -1,10 +1,11 @@
-import { QueryTypes, Sequelize } from 'sequelize';
+import { Sequelize } from 'sequelize';
 import {CourseModelManager} from "../schema/models/coursesModelManager/courseModelManager";
 import {StudentModelManager} from "../schema/models/studentModelManager/studentModelManager";
 import {IDatabase} from "./type";
 import { nest } from '../../utils';
 import config from '../../config/index';
 import logger from "@shared/Logger";
+import {EnrollmentModelManager} from "../schema/models/enrollmentModelManager/enrollmentModelManager";
 
 
 
@@ -38,9 +39,59 @@ export class MysqlManager implements IDatabase {
         return new Sequelize(this.dbUri, {logging: false});
     }
 
+    private async addStudentAssociation(): Promise<boolean | Error>{
+        try{
+            StudentModelManager.getInstance()
+                .getModel()
+                .hasMany(EnrollmentModelManager.getInstance().getModel(), {
+                    sourceKey: 'id',
+                    foreignKey: 'studentId',
+                });
+            EnrollmentModelManager.getInstance()
+                .getModel()
+                .belongsTo(StudentModelManager.getInstance().getModel(), {
+                    foreignKey: 'studentId',
+                });
+            return true;
+        } catch (err) {
+            logger.error('Error while adding association into studentModel', {
+                error: err,
+            });
+            throw new Error('Error while adding association studentModel');
+        }
+    }
+
+
+    private async addCourseAssociation(): Promise<boolean | Error>{
+        try{
+            CourseModelManager.getInstance()
+                .getModel()
+                .hasMany(EnrollmentModelManager.getInstance().getModel(), {
+                    sourceKey: 'id',
+                    foreignKey: 'courseId',
+                });
+            EnrollmentModelManager.getInstance()
+                .getModel()
+                .belongsTo(CourseModelManager.getInstance().getModel(), {
+                    foreignKey: 'courseId',
+                });
+            return true;
+        } catch (err) {
+            logger.error('Error while adding association into courseModel', {
+                error: err,
+            });
+            throw new Error('Error while adding association courseModel');
+        }
+    }
+
+
+
     private async registerModels(sequelize: Sequelize): Promise<boolean | Error> {
         CourseModelManager.getInstance().register(sequelize);
         StudentModelManager.getInstance().register(sequelize);
+        EnrollmentModelManager.getInstance().register(sequelize);
+        this.addCourseAssociation();
+        this.addStudentAssociation();
         const [err, isCreated] = await nest(sequelize.sync({ alter: true }));
         if (err && !isCreated) {
             logger.error('Error in registering models', { error: err });

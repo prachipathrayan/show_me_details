@@ -33,7 +33,6 @@ export class StudentModelManager{
                 timestamps: true,
                 createdAt: 'createdAt',
                 updatedAt: 'updatedAt',
-                indexes: [{ unique: true }],
             }
         );
     }getModel(): ModelCtor<IStudentModel> {

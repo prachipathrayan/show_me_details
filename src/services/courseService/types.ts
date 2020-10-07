@@ -1,6 +1,6 @@
 export interface ICourseServices{
-    getListOfCourses(): Promise<any | Error>;
-    getCourseById(id:number): Promise<any| Error>;
+    // getListOfCourses(): Promise<any | Error>;
+    // getCourseById(id:number): Promise<any| Error>;
     //addCourse(courseDetails : courseDetails): Promise<any| Error>;
 }
 

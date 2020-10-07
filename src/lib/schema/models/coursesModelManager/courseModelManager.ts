@@ -28,6 +28,14 @@ export class CourseModelManager{
                     type: DataTypes.STRING,
                     allowNull: false,
                 },
+                slug: {
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                    set() {
+                        const slug: string = this.name.toLowerCase().split(' ').join('_');
+                        this.setDataValue('slug', slug);
+                    },
+                },
                 description: {
                     type: DataTypes.STRING,
                     allowNull: false,
@@ -41,7 +49,7 @@ export class CourseModelManager{
                 timestamps: true,
                 createdAt: 'createdAt',
                 updatedAt: 'updatedAt',
-                indexes: [{ unique: true }],
+                indexes: [{ unique: true, fields: ['slug'] }],
             }
         );
     }getModel(): ModelCtor<ICourseModel> {

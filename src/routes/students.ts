@@ -6,7 +6,7 @@ import logger from '@shared/Logger';
 
 import { paramMissingError } from '@shared/constants';
 import {studentDetails} from "../services/studentService/types";
-import {StudentService} from "../services/studentService";
+//import {StudentService} from "../services/studentService";
 import {CourseService} from "../services/courseService";
 import {courseDetails} from "../services/courseService/types";
 
@@ -17,23 +17,23 @@ const router = Router();
  *                      Get All Users - "GET /api/students/all"
  ******************************************************************************/
 
-router.get('/all', async (req: Request, res: Response) => {
-    const getStudents = new StudentService();
-    let student : studentDetails[];
-    let err: Error;
-    [err, student]= await nest(getStudents.getListOfStudents());
-    if(err){
-        logger.error('Router Problem');
-        throw new Error('Router Problem');
-        return res.json({
-            Error: err,
-        })
-    }
-    return res.json({
-        data: student,
-        error: null
-    });
-});
+// router.get('/all', async (req: Request, res: Response) => {
+//     const getStudents = new StudentService();
+//     let student : studentDetails[];
+//     let err: Error;
+//     [err, student]= await nest(getStudents.getListOfStudents());
+//     if(err){
+//         logger.error('Router Problem');
+//         throw new Error('Router Problem');
+//         return res.json({
+//             Error: err,
+//         })
+//     }
+//     return res.json({
+//         data: student,
+//         error: null
+//     });
+// });
 
 // router.post('/add', async (req: Request, res: Response) => {
 //     const studentService = new StudentService();

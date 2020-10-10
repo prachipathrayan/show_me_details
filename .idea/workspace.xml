@@ -20,11 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66484cea-5f78-4a1d-8d4a-b143b7500871" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/routes/auth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/schema/models/coursesModelManager/courseModelManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/schema/models/coursesModelManager/courseModelManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/schema/models/enrollmentModelManager/enrollmentModelManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/schema/models/enrollmentModelManager/enrollmentModelManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Courses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Courses.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/students.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/students.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/authService/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/authService/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/courseService/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/courseService/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/courseService/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/courseService/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/studentService/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/studentService/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/studentService/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/studentService/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +92,8 @@
       <workItem from="1601754807755" duration="1240000" />
       <workItem from="1601901745652" duration="4501000" />
       <workItem from="1601986980866" duration="25165000" />
-      <workItem from="1602168916676" duration="1838000" />
+      <workItem from="1602168916676" duration="8899000" />
+      <workItem from="1602337101919" duration="5557000" />
     </task>
     <servers />
   </component>
@@ -114,10 +121,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="533" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1602016698492" />
-    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1602176228361">
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1602337120198">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1602176228361" />
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1602337120198" />
     <state width="1364" height="258" key="GridCell.Tab.0.bottom" timestamp="1601391540092">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

@@ -6,7 +6,7 @@ import AuthRouter from './auth';
 const router = Router();
 
 // Add sub-routes
-router.use('/coursesModelManager', CourseRouter);
+router.use('/courses', CourseRouter);
 router.use('/students', StudentRouter);
 router.use('/auth', AuthRouter);
 

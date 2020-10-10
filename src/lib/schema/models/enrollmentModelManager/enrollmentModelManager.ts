@@ -1,11 +1,11 @@
 import {IEnrollment} from "./types";
 import {DataTypes, Model, ModelCtor, Sequelize} from "sequelize";
 
-export interface ICourseModel extends IEnrollment, Model {}
+export interface IEnrollmentModel extends IEnrollment, Model {}
 
 export class EnrollmentModelManager{
     private static instance: EnrollmentModelManager;
-    private Enrollment: ModelCtor<ICourseModel> = {} as ModelCtor<ICourseModel>;
+    private Enrollment: ModelCtor<IEnrollmentModel> = {} as ModelCtor<IEnrollmentModel>;
     static getInstance(): EnrollmentModelManager {
         if (!EnrollmentModelManager.instance) {
             EnrollmentModelManager.instance = new EnrollmentModelManager();
@@ -14,7 +14,7 @@ export class EnrollmentModelManager{
     }
 
     register(sequelize: Sequelize): void {
-        this.Enrollment = sequelize.define<ICourseModel>(
+        this.Enrollment = sequelize.define<IEnrollmentModel>(
             'Enrollment',
             {
                 id: {
@@ -31,7 +31,7 @@ export class EnrollmentModelManager{
                 updatedAt: 'updatedAt',
             }
         );
-    }getModel(): ModelCtor<ICourseModel> {
+    }getModel(): ModelCtor<IEnrollmentModel> {
         return this.Enrollment;
     }
 }

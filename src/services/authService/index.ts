@@ -24,14 +24,14 @@ export class AuthService implements IUser {
         );
         if (err) {
             logger.error('Error finding user', { error: err });
-            throw Error('Error finding user');
+            throw new Error('Error finding user');
         }
         [err, isValid] = await nest(
             comparePassword(studentDetails.passwordHash, loginRequest.password)
         );
         if (err) {
             logger.error('Error comparing password', { error: err });
-            throw Error('Error comparing password');
+            throw new Error('Error comparing password');
         }
         if (!isValid) {
             logger.error('Invalid credentials');
@@ -59,7 +59,7 @@ export class AuthService implements IUser {
         const [err, studentData] = await nest(userObject.save());
         if (err) {
             logger.error('Error while registering', { error: err });
-            throw Error('Error while registering');
+            throw new Error('Error while registering');
         }
         let token: string;
         let error: Error;
@@ -83,7 +83,7 @@ export class AuthService implements IUser {
             return token;
         } catch (e) {
             logger.error('Error generating new token', { error: e });
-            throw Error('Error generating new token');
+            throw new Error('Error generating new token');
         }
     }
 }

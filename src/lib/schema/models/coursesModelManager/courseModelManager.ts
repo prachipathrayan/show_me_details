@@ -41,7 +41,7 @@ export class CourseModelManager{
                     allowNull: false,
                 },
                 availableSlots: {
-                    type: DataTypes.INTEGER,
+                    type: DataTypes.INTEGER.UNSIGNED,
                     allowNull: false,
                 },
             },

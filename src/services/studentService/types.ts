@@ -1,11 +1,15 @@
 export interface IStudentServices{
     getListOfStudents(): Promise<any | Error>;
-    //addStudent(studentDetails: studentDetails): Promise<any | Error>;
+    enrollStudent(enrollment: enrollStudent): Promise<enrollStudent | Error>
 }
 
 export type studentDetails={
     id : number;
     name: string;
     email: string;
-    passwordHash: string;
+}
+
+export type enrollStudent={
+    studentId : number;
+    courseId : number;
 }

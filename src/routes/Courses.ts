@@ -6,7 +6,7 @@ import { paramMissingError } from '@shared/constants';
 import {nest} from "../utils";
 import logger from "@shared/Logger";
 import {CourseService} from "../services/courseService";
-import {courseDetails} from "../services/courseService/types";
+import {courseDetails, SignUpCourse} from "../services/courseService/types";
 
 // Init shared
 const router = Router();
@@ -14,67 +14,64 @@ const router = Router();
 
 
 /******************************************************************************
- *                      Get All Users - "GET /api/coursesModelManager/all"
+ *                      Get All Users - "GET /api/courses/all"
  ******************************************************************************/
 
 router.get('/all', async (req: Request, res: Response) => {
     const courseService = new CourseService();
     let courses : courseDetails[];
     let err: Error;
-    // [err, courses]= await nest(courseService.getListOfCourses());
-    // if(err){
-    //     logger.error('Router Problem');
-    //     throw new Error('Router Problem');
-    //     return res.json({
-    //         Error: err,
-    //     })
-    // }
-    // else{
-    //     return res.json({
-    //     data: courses,
-    //     error: null
-    // });}
+    [err, courses]= await nest(courseService.getListOfCourses());
+    if(err){
+        logger.error('Router Problem');
+        return res.json({
+            Error: err.message,
+        })
+    }
+    else{
+        return res.json({
+        data: courses,
+        error: null
+    });}
 
 });
 
 
 
 /******************************************************************************
- *                       Add One - "POST /api/users/add"
+ *                       Add One - "POST /api/courses/add"
  ******************************************************************************/
 
-// router.post('/add', async (req: Request, res: Response) => {
-//     const courseService = new CourseService();
-//     let err : Error;
-//     let isCreated : Boolean;
-//     const {
-//         id,
-//         name,
-//         description,
-//         availableSlots,
-//     }: courseDetails = req.body;
-//     [err, isCreated]= await nest(
-//         courseService.addCourse({
-//             id,
-//             name,
-//             description,
-//             availableSlots,
-//         })
-//     );
-//     if(err){
-//         logger.error('Error in adding the course',{ 'error' : err});
-//         throw new Error('Error in adding the course');
-//         return res.json({
-//             error : err,
-//         })
-//     }
-//     else{
-//         return res.json({
-//             isCreated : isCreated,
-//         });
-//     }
-//
-// });
+router.post('/add', async (req: Request, res: Response) => {
+    const courseService = new CourseService();
+    let err : Error;
+    let isCreated : boolean;
+    const {
+        name,
+        description,
+        availableSlots,
+    }: courseDetails = req.body;
+    [err, isCreated]= await nest(
+        courseService.addCourses({
+            name,
+            slug : name,
+            description,
+            availableSlots,
+        })
+    );
+    if(err){
+        logger.error('Error in adding the course',{ 'error' : err});
+        return res.json({
+            error : err.message,
+        })
+    }
+    else{
+        return res.json({
+            isCreated : isCreated,
+        });
+    }
+
+});
 
 
 /******************************************************************************

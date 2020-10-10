@@ -1,12 +1,9 @@
 import { Request, Response, Router } from 'express';
-import { BAD_REQUEST, CREATED, OK } from 'http-status-codes';
-import { ParamsDictionary } from 'express-serve-static-core';
-
-import { paramMissingError } from '@shared/constants';
 import {nest} from "../utils";
 import logger from "@shared/Logger";
 import {CourseService} from "../services/courseService";
 import {courseDetails, SignUpCourse} from "../services/courseService/types";
+import {checkToken} from "../utils/tokenauth.middleware";
 
 // Init shared
 const router = Router();
@@ -17,7 +14,7 @@ const router = Router();
  *                      Get All Users - "GET /api/courses/all"
  ******************************************************************************/
 
-router.get('/all', async (req: Request, res: Response) => {
+router.get('/all', checkToken, async (req: Request, res: Response) => {
     const courseService = new CourseService();
     let courses : courseDetails[];
     let err: Error;
@@ -42,15 +39,17 @@ router.get('/all', async (req: Request, res: Response) => {
  *                       Add One - "POST /api/courses/add"
  ******************************************************************************/
 
-router.post('/add', async (req: Request, res: Response) => {
-    const courseService = new CourseService();
-    let err : Error;
-    let isCreated : boolean;
+router.post('/add', checkToken, async (req: Request, res: Response) => {
     const {
         name,
         description,
         availableSlots,
     }: courseDetails = req.body;
+
+    const courseService = new CourseService();
+    let err : Error;
+    let isCreated : boolean;
+
     [err, isCreated]= await nest(
         courseService.addCourses({
             name,
@@ -73,34 +72,6 @@ router.post('/add', async (req: Request, res: Response) => {
 
 });
 
-
-/******************************************************************************
- *                       Update - "PUT /api/users/update"
- ******************************************************************************/
-
-// router.put('/update', async (req: Request, res: Response) => {
-//     const { user } = req.body;
-//     if (!user) {
-//         return res.status(BAD_REQUEST).json({
-//             error: paramMissingError,
-//         });
-//     }
-//     user.id = Number(user.id);
-//     await userDao.update(user);
-//     return res.status(OK).end();
-// });
-//
-//
-// /******************************************************************************
-//  *                    Delete - "DELETE /api/users/delete/:id"
-//  ******************************************************************************/
-//
-// router.delete('/delete/:id', async (req: Request, res: Response) => {
-//     const { id } = req.params as ParamsDictionary;
-//     await userDao.delete(Number(id));
-//     return res.status(OK).end();
-// });
-//
 
 /******************************************************************************
  *                                     Export

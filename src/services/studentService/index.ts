@@ -55,6 +55,7 @@ export class StudentService implements IStudentServices {
             courseId: enrollment.courseId,
         });
         const [err, enrollmentData] = await nest(enrollmentObject.save());
+
         if (err) {
             logger.error('Error while registering', {error: err});
             throw new Error('Error while registering');

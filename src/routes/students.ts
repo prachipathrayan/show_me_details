@@ -34,7 +34,7 @@ router.get('/all', checkToken , async (req: Request, res: Response) => {
  *                      Get All Users - "GET /api/students/enroll"
  ******************************************************************************/
 
-router.post('/enroll', async (req: Request, res: Response) => {
+router.post('/enroll', checkToken, async (req: Request, res: Response) => {
     const {studentId, courseId} = req.body;
     if(!studentId || !courseId){
         return res.json({

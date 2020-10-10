@@ -26,7 +26,7 @@ export const checkToken = async (
             let err: Error;
             let userDetails: IStudentModel;
             [err, userDetails] = await nest(userModel.findByPk(student_id));
-            if (err || userDetails === null) {
+            if (err || !userDetails) {
                 throw Error('User not found');
             }
             next();

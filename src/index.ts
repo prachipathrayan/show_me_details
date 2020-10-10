@@ -7,15 +7,7 @@ import {nest} from "./utils";
 
 // Start the server
 const init = async () => {
-    // const anayticsVednor: IAnalyticsVendor = new SentryAnalyticsVendor();
-     let err: Error;
-    // let isInitialised: boolean;
-    // [err, isInitialised] = await nest(anayticsVednor.init());
-    // if (err && !isInitialised) {
-    //     logger.error('Error in initialising analytics vendor');
-    // } else {
-    //     logger.info('Analytics Vendor initialised');
-    // }
+    let err: Error;
     const databaseManager: IDatabase = MysqlManager.getInstance();
     let isConnected: boolean;
     [err, isConnected] = await nest(databaseManager.connect());

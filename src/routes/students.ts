@@ -3,6 +3,7 @@ import {nest} from '../utils';
 import logger from '@shared/Logger';
 import {studentDetails} from "../services/studentService/types";
 import {StudentService} from "../services/studentService";
+import {checkToken} from "../utils/tokenauth.middleware";
 
 
 const router = Router();
@@ -11,7 +12,7 @@ const router = Router();
  *                      Get All Users - "GET /api/students/all"
  ******************************************************************************/
 
-router.get('/all', async (req: Request, res: Response) => {
+router.get('/all', checkToken , async (req: Request, res: Response) => {
     const getStudents = new StudentService();
     let student : studentDetails[];
     let err: Error;

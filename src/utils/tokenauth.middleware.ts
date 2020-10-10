@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import {Request, Response, NextFunction, request, response} from 'express';
+import { Request, Response, NextFunction } from 'express';
 import {
     IStudentModel,
     StudentModelManager,
@@ -20,12 +20,12 @@ export const checkToken = async (
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const jwtPayload = <any>jwt.verify(token, jwtObject.secret);
             // eslint-disable-next-line camelcase
-            const { user_id } = jwtPayload;
-            res.setHeader('user_id', user_id);
+            const { student_id } = jwtPayload;
+            res.setHeader('user_id', student_id);
             const userModel = StudentModelManager.getInstance().getModel();
             let err: Error;
             let userDetails: IStudentModel;
-            [err, userDetails] = await nest(userModel.findByPk(user_id));
+            [err, userDetails] = await nest(userModel.findByPk(student_id));
             if (err || userDetails === null) {
                 throw Error('User not found');
             }
@@ -44,17 +44,6 @@ export const checkToken = async (
 
 
 
-async function verifyId(student_id : number): Promise<boolean | Error>{
-    const studentModel = StudentModelManager.getInstance().getModel();
-    let err: Error;
-    let studentDetails: IStudentModel;
-    [err, studentDetails] = await nest(studentModel.findByPk(student_id));
-    if (err || studentDetails === null) {
-        throw Error('User not found');
-    }
-    else{
-        return true;
-    }
-}
+
 
 

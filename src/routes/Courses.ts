@@ -2,7 +2,7 @@ import { Request, Response, Router } from 'express';
 import {nest} from "../utils";
 import logger from "@shared/Logger";
 import {CourseService} from "../services/courseService";
-import {courseDetails, SignUpCourse} from "../services/courseService/types";
+import {courseDetails} from "../services/courseService/types";
 import {checkToken} from "../utils/tokenauth.middleware";
 
 // Init shared

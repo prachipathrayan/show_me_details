@@ -29,6 +29,12 @@ export class EnrollmentModelManager{
                 timestamps: true,
                 createdAt: 'createdAt',
                 updatedAt: 'updatedAt',
+                indexes: [
+                    {
+                        unique: true,
+                        fields: ['studentId', 'courseId']
+                    }
+                ]
             }
         );
     }getModel(): ModelCtor<IEnrollmentModel> {

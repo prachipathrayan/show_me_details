@@ -45,6 +45,12 @@ export class StudentModelManager{
                 timestamps: true,
                 createdAt: 'createdAt',
                 updatedAt: 'updatedAt',
+                indexes: [
+                    {
+                        unique: true,
+                        fields: ['username']
+                    }
+                ]
             }
         );
     }getModel(): ModelCtor<IStudentModel> {

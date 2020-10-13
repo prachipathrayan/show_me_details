@@ -25,7 +25,9 @@
     "@server": "dist/Server"
   },
   "dependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/sequelize": "^4.28.9",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "command-line-args": "^5.1.1",
     "cookie-parser": "^1.4.5",
@@ -36,6 +38,8 @@
     "helmet": "^4.1.1",
     "http-status-codes": "^2.1.4",
     "jsonfile": "^6.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "logfly": "^1.2.12",
     "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
@@ -52,6 +56,7 @@
     "@types/helmet": "0.0.48",
     "@types/jasmine": "^3.5.14",
     "@types/jsonfile": "^6.0.0",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/morgan": "^1.9.1",
     "@types/node": "^14.11.2",
     "@types/supertest": "^2.0.10",

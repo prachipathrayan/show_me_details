@@ -10,6 +10,8 @@ import {
     EnrollmentModelManager,
     IEnrollmentModel
 } from "../../lib/schema/models/enrollmentModelManager/enrollmentModelManager";
+import {MysqlManager} from "../../lib/database/mysql";
+
 
 
 
@@ -54,13 +56,42 @@ export class StudentService implements IStudentServices {
             studentId: enrollment.studentId,
             courseId: enrollment.courseId,
         });
-        const [err, enrollmentData] = await nest(enrollmentObject.save());
 
+        const [err, enrollmentData] = await nest(enrollmentObject.save());
         if (err) {
             logger.error('Error while registering', {error: err});
             throw new Error('Error while registering');
         }
-
+        let query =`UPDATE Courses SET availableSlots = availableSlots - 1 WHERE id=${enrollment.courseId}`;
+        let error: Error;
+        let isUpdated: boolean;
+        [error, isUpdated]= await nest(MysqlManager.getInstance().executeUpdateQuery(query));
+        if(error){
+            logger.error('Error while updating the data', {error: err});
+            throw  new Error('Error while updating the data');
+        }
         return enrollmentData;
     }
+    async unenrollStudent(
+        enrollment: enrollStudent
+    ): Promise<boolean | Error> {
+        let err: Error;
+        let isDeleted: boolean
+        let query1 =`DELETE FROM Enrollments WHERE courseId=${enrollment.courseId} AND studentId=${enrollment.studentId}`;
+        [err, isDeleted]= await nest(MysqlManager.getInstance().executeDeleteQuery(query1));
+        if(err){
+            logger.error('Error while deleting the data', {error: err});
+            throw  new Error('Error while deleting the data');
+        }
+        let query =`UPDATE Courses SET availableSlots = availableSlots + 1 WHERE id=${enrollment.courseId}`;
+        let error: Error;
+        let isUpdated: boolean;
+        [error, isUpdated]= await nest(MysqlManager.getInstance().executeUpdateQuery(query));
+        if(error){
+            logger.error('Error while updating the data', {error: err});
+            throw  new Error('Error while updating the data');
+        }
+        return isDeleted;
+    }
+
 }

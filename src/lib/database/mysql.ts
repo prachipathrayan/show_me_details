@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize';
+import {QueryTypes, Sequelize} from 'sequelize';
 import {CourseModelManager} from "../schema/models/coursesModelManager/courseModelManager";
 import {StudentModelManager} from "../schema/models/studentModelManager/studentModelManager";
 import {IDatabase} from "./type";
@@ -96,6 +96,37 @@ export class MysqlManager implements IDatabase {
         if (err && !isCreated) {
             logger.error('Error in registering models', { error: err });
             throw new Error('Error in registering models');
+        }
+        return true;
+    }
+    async executeUpdateQuery(query: string): Promise<boolean | Error> {
+        let err: Error;
+        let result: any;
+        [err, result] = await nest(
+            this.getSequelizeInstance().query(query, {
+                raw: true,
+                type: QueryTypes.UPDATE,
+            })
+        );
+        if (err) {
+            logger.error('Error in executing raw query', { error: err, query });
+            throw new Error('Error in executing query');
+        }
+        return true;
+    }
+
+    async executeDeleteQuery(query: string): Promise<boolean | Error> {
+        let err: Error;
+        let result: any;
+        [err, result] = await nest(
+            this.getSequelizeInstance().query(query, {
+                raw: true,
+                type: QueryTypes.DELETE,
+            })
+        );
+        if (err) {
+            logger.error('Error in executing raw query', { error: err, query });
+            throw new Error('Error in executing query');
         }
         return true;
     }

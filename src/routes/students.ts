@@ -31,7 +31,7 @@ router.get('/all', checkToken , async (req: Request, res: Response) => {
 });
 
 /******************************************************************************
- *                      Get All Users - "GET /api/students/enroll"
+ *                      Post API- "POST /api/students/enroll"
  ******************************************************************************/
 
 router.post('/enroll', checkToken, async (req: Request, res: Response) => {
@@ -46,6 +46,37 @@ router.post('/enroll', checkToken, async (req: Request, res: Response) => {
     let isEnrolled: boolean;
     let err: Error;
     [err, isEnrolled]= await nest(enrollStudent.enrollStudent({
+        studentId,
+        courseId,
+    }));
+    if(err){
+        logger.error('Router Problem');
+        throw new Error('Router Problem');
+        return res.json({
+            Error: err,
+        })
+    }
+    return res.json({
+        data: isEnrolled,
+        error: null
+    });
+});
+/******************************************************************************
+ *                      Delete student - "Post /api/students/enroll"
+ ******************************************************************************/
+
+router.post('/unenroll', checkToken, async (req: Request, res: Response) => {
+    const {studentId, courseId} = req.body;
+    if(!studentId || !courseId){
+        return res.json({
+            data:null,
+            error: 'Invalid Payload',
+        })
+    }
+    const enrollStudent = new StudentService();
+    let isEnrolled: boolean;
+    let err: Error;
+    [err, isEnrolled]= await nest(enrollStudent.unenrollStudent({
         studentId,
         courseId,
     }));

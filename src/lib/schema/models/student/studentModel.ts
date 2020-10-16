@@ -3,14 +3,14 @@ import {DataTypes, Model, ModelCtor, Sequelize} from "sequelize";
 
 export interface IStudentModel extends IStudent, Model {}
 
-export class StudentModelManager{
-    private static instance: StudentModelManager;
+export class StudentModel{
+    private static instance: StudentModel;
     private Student: ModelCtor<IStudentModel> = {} as ModelCtor<IStudentModel>;
-    static getInstance(): StudentModelManager {
-        if (!StudentModelManager.instance) {
-            StudentModelManager.instance = new StudentModelManager();
+    static getInstance(): StudentModel {
+        if (!StudentModel.instance) {
+            StudentModel.instance = new StudentModel();
         }
-        return StudentModelManager.instance;
+        return StudentModel.instance;
     }
 
     register(sequelize: Sequelize): void {
@@ -58,6 +58,6 @@ export class StudentModelManager{
     }
 }
 
-export default StudentModelManager.getInstance().getModel();
+export default StudentModel.getInstance().getModel();
 
 

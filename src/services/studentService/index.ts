@@ -4,12 +4,12 @@ import {IStudentServices, studentDetails, enrollStudent} from './types';
 import { ModelCtor } from 'sequelize';
 import {
     IStudentModel,
-    StudentModelManager
-} from "../../lib/schema/models/studentModelManager/studentModelManager";
+    StudentModel
+} from "../../lib/schema/models/student/studentModel";
 import {
-    EnrollmentModelManager,
+    EnrollmentModel,
     IEnrollmentModel
-} from "../../lib/schema/models/enrollmentModelManager/enrollmentModelManager";
+} from "../../lib/schema/models/enrollment/enrollmentModel";
 import {MysqlManager} from "../../lib/database/mysql";
 import {IDatabase} from "../../lib/database/type";
 
@@ -18,17 +18,7 @@ import {IDatabase} from "../../lib/database/type";
 
 export class StudentService implements IStudentServices {
 
-    async getStudents(): Promise<any | Error> {
-        let err: Error;
-        let res: any;
-        const Student: ModelCtor<IStudentModel> = StudentModelManager.getInstance().getModel();
-        [err, res] = await nest(Student.findAll());
-        if (err) {
-            logger.error('Error in fetching data from the file', {Error: err});
-            throw new Error('Error in fetching data from the file');
-        }
-        return res;
-    }
+
 
     async getListOfStudents(): Promise<any | Error> {
         let err: Error;
@@ -49,10 +39,27 @@ export class StudentService implements IStudentServices {
         return listOfStudents;
     }
 
+
+    private async getStudents(): Promise<any | Error> {
+        let err: Error;
+        let res: any;
+        const student: ModelCtor<IStudentModel> = StudentModel.getInstance().getModel();
+        [err, res] = await nest(student.findAll());
+        if (err) {
+            logger.error('Error in fetching data from the file', {Error: err});
+            throw new Error('Error in fetching data from the file');
+        }
+        return res;
+    }
+
+
+
+    private databaseManager: IDatabase = MysqlManager.getInstance();
+
     async enrollStudent(
         enrollment: enrollStudent
     ): Promise<enrollStudent | Error> {
-        const enrollStudent = EnrollmentModelManager.getInstance().getModel();
+        const enrollStudent = EnrollmentModel.getInstance().getModel();
         const enrollmentObject: IEnrollmentModel = enrollStudent.build({
             studentId: enrollment.studentId,
             courseId: enrollment.courseId,
@@ -66,7 +73,7 @@ export class StudentService implements IStudentServices {
         let query =`UPDATE Courses SET availableSlots = availableSlots - 1 WHERE id=${enrollment.courseId}`;
         let error: Error;
         let isUpdated: boolean;
-        [error, isUpdated]= await nest(MysqlManager.getInstance().executeUpdateQuery(query));
+        [error, isUpdated]= await nest(this.databaseManager.executeUpdateQuery(query));
         if(error){
             logger.error('Error while updating the data', {error: err});
             throw  new Error('Error while updating the data');
@@ -78,9 +85,8 @@ export class StudentService implements IStudentServices {
     ): Promise<boolean | Error> {
         let err: Error;
         let isDeleted: boolean;
-        const databaseManager: IDatabase = MysqlManager.getInstance();
         let query1 =`DELETE FROM Enrollments WHERE courseId=${enrollment.courseId} AND studentId=${enrollment.studentId}`;
-        [err, isDeleted]= await nest(databaseManager.executeDeleteQuery(query1));
+        [err, isDeleted]= await nest(this.databaseManager.executeDeleteQuery(query1));
         if(err){
             logger.error('Error while deleting the data', {error: err});
             throw  new Error('Error while deleting the data');
@@ -88,7 +94,7 @@ export class StudentService implements IStudentServices {
         let query =`UPDATE Courses SET availableSlots = availableSlots + 1 WHERE id=${enrollment.courseId}`;
         let error: Error;
         let isUpdated: boolean;
-        [error, isUpdated]= await nest(databaseManager.executeUpdateQuery(query));
+        [error, isUpdated]= await nest(this.databaseManager.executeUpdateQuery(query));
         if(error){
             logger.error('Error while updating the data', {error: err});
             throw  new Error('Error while updating the data');

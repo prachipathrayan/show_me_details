@@ -2,23 +2,13 @@ import { nest } from '../../utils';
 import logger from '@shared/Logger';
 import {ICourseServices, courseDetails, SignUpCourse} from './types';
 import { ModelCtor } from 'sequelize';
-import {ICourseModel, CourseModelManager} from "../../lib/schema/models/coursesModelManager/courseModelManager";
+import {ICourseModel, CourseModel} from "../../lib/schema/models/course/courseModel";
 
 
 
 export class CourseService implements ICourseServices {
 
-    async getCourses(): Promise<any | Error> {
-        let err: Error;
-        let res: any;
-        const Course: ModelCtor<ICourseModel> = CourseModelManager.getInstance().getModel();
-        [err, res] = await nest(Course.findAll());
-        if (err) {
-            logger.error('Error in fetching data from the file', {Error: err});
-            throw new Error('Error in fetching data from the file');
-        }
-        return res;
-    }
+    private Course: ModelCtor<ICourseModel> = CourseModel.getInstance().getModel();
 
     async getListOfCourses(): Promise<any | Error> {
         let err: Error;
@@ -40,11 +30,21 @@ export class CourseService implements ICourseServices {
         return listOfCourses;
     }
 
+    async getCourses(): Promise<any | Error> {
+        let err: Error;
+        let res: any;
+        [err, res] = await nest(this.Course.findAll());
+        if (err) {
+            logger.error('Error in fetching data from the file', {Error: err});
+            throw new Error('Error in fetching data from the file');
+        }
+        return res;
+    }
+
     async addCourses(
         signUpCourse: SignUpCourse
     ): Promise<boolean | Error> {
-        const Course = CourseModelManager.getInstance().getModel();
-        const userObject: ICourseModel = Course.build({
+        const userObject: ICourseModel = this.Course.build({
             name: signUpCourse.name,
             slug: signUpCourse.slug,
             description: signUpCourse.description,

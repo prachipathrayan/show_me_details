@@ -4,8 +4,8 @@ import { IUser, LoginRequest, SignUpRequest } from './types';
 import logger from '../../shared/logger';
 import {
     IStudentModel,
-    StudentModelManager,
-} from '../../lib/schema/models/studentModelManager/studentModelManager';
+    StudentModel,
+} from '../../lib/schema/models/student/studentModel';
 import jwt from 'jsonwebtoken';
 import jwtObject from '../../config/jwt.config';
 import { ModelCtor } from 'sequelize';
@@ -15,7 +15,7 @@ export class AuthService implements IUser {
     async logInAndGenerateToken(
         loginRequest: LoginRequest
     ): Promise<string | Error> {
-        const Student: ModelCtor<IStudentModel> = StudentModelManager.getInstance().getModel();
+        const Student: ModelCtor<IStudentModel> = StudentModel.getInstance().getModel();
         let err: Error;
         let studentDetails: IStudentModel;
         let isValid: boolean | false;
@@ -49,7 +49,7 @@ export class AuthService implements IUser {
     async signUpAndGenerateToken(
         signUpRequest: SignUpRequest
     ): Promise<string | Error> {
-        const Student = StudentModelManager.getInstance().getModel();
+        const Student = StudentModel.getInstance().getModel();
         const userObject: IStudentModel = Student.build({
             username: signUpRequest.username,
             name: signUpRequest.name,

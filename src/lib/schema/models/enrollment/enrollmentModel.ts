@@ -3,14 +3,14 @@ import {DataTypes, Model, ModelCtor, Sequelize} from "sequelize";
 
 export interface IEnrollmentModel extends IEnrollment, Model {}
 
-export class EnrollmentModelManager{
-    private static instance: EnrollmentModelManager;
+export class EnrollmentModel{
+    private static instance: EnrollmentModel;
     private Enrollment: ModelCtor<IEnrollmentModel> = {} as ModelCtor<IEnrollmentModel>;
-    static getInstance(): EnrollmentModelManager {
-        if (!EnrollmentModelManager.instance) {
-            EnrollmentModelManager.instance = new EnrollmentModelManager();
+    static getInstance(): EnrollmentModel {
+        if (!EnrollmentModel.instance) {
+            EnrollmentModel.instance = new EnrollmentModel();
         }
-        return EnrollmentModelManager.instance;
+        return EnrollmentModel.instance;
     }
 
     register(sequelize: Sequelize): void {
@@ -42,6 +42,6 @@ export class EnrollmentModelManager{
     }
 }
 
-export default EnrollmentModelManager.getInstance().getModel();
+export default EnrollmentModel.getInstance().getModel();
 
 

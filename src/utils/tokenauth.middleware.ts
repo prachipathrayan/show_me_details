@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import {
     IStudentModel,
-    StudentModelManager,
-} from '../lib/schema/models/studentModelManager/studentModelManager';
+    StudentModel,
+} from '../lib/schema/models/student/studentModel';
 import jwtObject from '../config/jwt.config';
 import logger from '../shared/logger';
 import { nest } from '.';
@@ -22,7 +22,7 @@ export const checkToken = async (
             // eslint-disable-next-line camelcase
             const { student_id } = jwtPayload;
             res.setHeader('user_id', student_id);
-            const userModel = StudentModelManager.getInstance().getModel();
+            const userModel = StudentModel.getInstance().getModel();
             let err: Error;
             let userDetails: IStudentModel;
             [err, userDetails] = await nest(userModel.findByPk(student_id));

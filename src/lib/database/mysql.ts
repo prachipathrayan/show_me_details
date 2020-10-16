@@ -1,11 +1,11 @@
 import {QueryTypes, Sequelize} from 'sequelize';
-import {CourseModelManager} from "../schema/models/coursesModelManager/courseModelManager";
-import {StudentModelManager} from "../schema/models/studentModelManager/studentModelManager";
+import {CourseModel} from "../schema/models/course/courseModel";
+import {StudentModel} from "../schema/models/student/studentModel";
 import {IDatabase} from "./type";
 import { nest } from '../../utils';
 import config from '../../config/index';
 import logger from "@shared/Logger";
-import {EnrollmentModelManager} from "../schema/models/enrollmentModelManager/enrollmentModelManager";
+import {EnrollmentModel} from "../schema/models/enrollment/enrollmentModel";
 
 
 
@@ -41,15 +41,15 @@ export class MysqlManager implements IDatabase {
 
     private async addStudentAssociation(): Promise<boolean | Error>{
         try{
-            StudentModelManager.getInstance()
+            StudentModel.getInstance()
                 .getModel()
-                .hasMany(EnrollmentModelManager.getInstance().getModel(), {
+                .hasMany(EnrollmentModel.getInstance().getModel(), {
                     sourceKey: 'id',
                     foreignKey: 'studentId',
                 });
-            EnrollmentModelManager.getInstance()
+            EnrollmentModel.getInstance()
                 .getModel()
-                .belongsTo(StudentModelManager.getInstance().getModel(), {
+                .belongsTo(StudentModel.getInstance().getModel(), {
                     foreignKey: 'studentId',
                 });
             return true;
@@ -64,15 +64,15 @@ export class MysqlManager implements IDatabase {
 
     private async addCourseAssociation(): Promise<boolean | Error>{
         try{
-            CourseModelManager.getInstance()
+            CourseModel.getInstance()
                 .getModel()
-                .hasMany(EnrollmentModelManager.getInstance().getModel(), {
+                .hasMany(EnrollmentModel.getInstance().getModel(), {
                     sourceKey: 'id',
                     foreignKey: 'courseId',
                 });
-            EnrollmentModelManager.getInstance()
+            EnrollmentModel.getInstance()
                 .getModel()
-                .belongsTo(CourseModelManager.getInstance().getModel(), {
+                .belongsTo(CourseModel.getInstance().getModel(), {
                     foreignKey: 'courseId',
                 });
             return true;
@@ -87,9 +87,9 @@ export class MysqlManager implements IDatabase {
 
 
     private async registerModels(sequelize: Sequelize): Promise<boolean | Error> {
-        CourseModelManager.getInstance().register(sequelize);
-        StudentModelManager.getInstance().register(sequelize);
-        EnrollmentModelManager.getInstance().register(sequelize);
+        CourseModel.getInstance().register(sequelize);
+        StudentModel.getInstance().register(sequelize);
+        EnrollmentModel.getInstance().register(sequelize);
         this.addCourseAssociation();
         this.addStudentAssociation();
         const [err, isCreated] = await nest(sequelize.sync({ alter: true }));
